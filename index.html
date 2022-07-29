@@ -73,11 +73,11 @@
     <input id="submit-0" type="button" value="Enter">
 
     <div id="fb-root"></div>
+    <div id="welcome"></div>
+
+
 
     <script>
-
-
-
 
         $(document).ready(function(){
             $("#submit-0").click(function(){
@@ -90,6 +90,11 @@
                 };
                 fetch.send();
             });
+            function setElements(isLoggediIn){
+                if(isLoggedIn){
+                    $('#welcome').attr('html',response.userID)
+                }
+            }
         });
     </script>
 </body>
