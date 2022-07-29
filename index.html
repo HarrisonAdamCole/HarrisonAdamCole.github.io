@@ -37,6 +37,7 @@
         function statusChangeCallback(response){
             if(response.status === 'connected'){
                 console.log('logged in and auth');
+                setElements(true);
             }else{
                 console.log('not auth');
             }
