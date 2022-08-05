@@ -8,177 +8,24 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!--loads jquierry-->
 
-    <script>
-         $(document).ready(function(){
-            $.ajaxSetup({ cache: true });
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                    });
-                };
-            });
-         });
-    </script>
-
-
-    <!-- <script>   
-        window.fbAsyncInit = function() {
-            FB.init({
-                appId      : '373584354725302',
-                cookie     : true,
-                xfbml      : true,
-                version    : 'v13.0'
-            });
-            
-            FB.AppEvents.logPageView(); 
-
-            FB.getLoginStatus(function(response) {
-                statusChangeCallback(response);
-            });
-        };
-
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-
-        $(document).ready(function(){
-            FB(document).ready(function(){
-                $("#submit-0").click(function(){
-                    $('#welcome').attr('html',response.userID)
-                    // var fetch = new XMLHttpRequest();
-                    // fetch.open('GET','https://learnwebcode.github.io/json-example/animals-1.json');
-                    // fetch.onload = function(){
-                    //     console.log(JSON.parse(fetch.responseText));
-                    // };
-                    // fetch.send();
-                });
-                function setElements(isLoggediIn){
-                    if(isLoggedIn){
-                        $('#welcome').attr('html',response.userID)
-                    }
-                };
-                function statusChangeCallback(response){
-                    if(response.status === 'connected'){
-                        console.log('logged in and auth');
-                        setElements(true);
-                    }else{
-                        console.log('not auth');
-                    }
-                };
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                    });
-                };
-            })
-        });
-
-        
-        
-        
-
-        
-        
-    </script> -->
 
     <link rel="shortcut icon" href="assets/brandAssets/favicon.svg" type="image/x-icon">  
 </head>
 <body>
-
     <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=373584354725302&autoLogAppEvents=1" nonce="XRCFjMhb"></script>
-
-    <!-- <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="true"></div> -->
-    
-    <fb:login-button 
-        ata-width="" 
-        data-size="large" 
-        data-button-type="continue_with" 
-        data-layout="default" 
-        data-auto-logout-link="false" 
-        data-use-continue-as="true"
-        scope="public_profile,email,pages_show_list"
-        onlogin="checkLoginState();">
-    </fb:login-button>
-
-
-
-    <h1 id="firstname-holder"></h1>
-    <input type="text" id="account-enter" placeholder="account">
-    <input id="submit-0" type="button" value="Enter">
-    <input id="submit-1" type="button" value="Logout">
-
-    <div id="fb-root"></div>
-    <div id="welcome">hello</div>
-
-
-    <div id="status"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v14.0&appId=373584354725302&autoLogAppEvents=1" nonce="uio9BDzF"></script>
+    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true"></div>
+    <button id="checkstate">checkstate</button>
     <script>
-        $(document).ready(function(){
-         
-            $.ajaxSetup({ cache: true });
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-                FB.init({
-                appId: '373584354725302',
-                version: 'v13.0' // or v2.1, v2.2, v2.3, ...
-                });     
-                $('#loginbutton,#feedbutton').removeAttr('disabled');
-                updateStatusCallback = false;
-                FB.getLoginStatus(updateStatusCallback);
-                
-
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-
-                $("#submit-0").click(function(){
-                    if(response.status === 'connected'){
-                        console.log('logged in and auth');
-                        setElements(true);
-                    }else{
-                        console.log('not auth');
-                        FB.login()//facebook login dialog box
-                    }
-                });
-                $("#submit-1").click(function(){
-                    FB.logout(function(response){
-                        setElements(false)
-                    });
-                });
-
-
-                function setElements(isLoggediIn){
-                    console.log('statechange');
-                };
-
-                function statusChangeCallback(response) {
-                    console.log('statusChangeCallback');
-                    console.log(response);
-                    // The response object is returned with a status field that lets the
-                    // app know the current login status of the person.
-                    // Full docs on the response object can be found in the documentation
-                    // for FB.getLoginStatus().
-                    if (response.status === 'connected') {
-                        // Logged into your app and Facebook.
-                        console.log('Welcome!  Fetching your information.... ');
-                        FB.api('/me', function (response) {
-                            console.log('Successful login for: ' + response.name);
-                            document.getElementById('status').innerHTML =
-                            'Thanks for logging in, ' + response.name + '!';
-                        });
-                    } else {
-                        // The person is not logged into your app or we are unable to tell.
-                        document.getElementById('status').innerHTML = 'Please log ' +
-                        'into this app.';
-                    }
+        document.getElementById('checkstate').onclick(updatelogstate);
+        function updatelogstate(){
+            FB.getLoginStatus(function(response) {
+                if (response.status === 'connected') {
+                    console.log(response.authResponse.accessToken);
                 }
             });
-        });
+        }
+    
     </script>
 </body>
 </html>
