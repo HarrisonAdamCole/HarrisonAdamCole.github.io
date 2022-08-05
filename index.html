@@ -48,6 +48,7 @@
                     if(isLoggedIn){
                         $('#welcome').attr('html',response.userID)
                     }
+                };
                 function statusChangeCallback(response){
                     if(response.status === 'connected'){
                         console.log('logged in and auth');
@@ -55,14 +56,13 @@
                     }else{
                         console.log('not auth');
                     }
+                };
                 function checkLoginState() {
                     FB.getLoginStatus(function(response) {
                             statusChangeCallback(response);
-                        });
-                    }
-                }
-            })  
-        }
+                    });
+                };
+            })
         });
 
         
