@@ -34,15 +34,14 @@
 
         $(document).ready(function(){
             FB(document).ready(function(){
-                    $("#submit-0").click(function(){
-                    // var inputValue = $("#account-enter").val().charAt(0).toUpperCase() + $("#account-enter").val().slice(1).toLowerCase( );
-                    // $("#firstname-holder").html('Hello There '+inputValue);
-                    var fetch = new XMLHttpRequest();
-                    fetch.open('GET','https://learnwebcode.github.io/json-example/animals-1.json');
-                    fetch.onload = function(){
-                        console.log(JSON.parse(fetch.responseText));
-                    };
-                    fetch.send();
+                $("#submit-0").click(function(){
+                    $('#welcome').attr('html',response.userID)
+                    // var fetch = new XMLHttpRequest();
+                    // fetch.open('GET','https://learnwebcode.github.io/json-example/animals-1.json');
+                    // fetch.onload = function(){
+                    //     console.log(JSON.parse(fetch.responseText));
+                    // };
+                    // fetch.send();
                 });
                 function setElements(isLoggediIn){
                     if(isLoggedIn){
