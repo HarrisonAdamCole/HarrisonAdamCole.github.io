@@ -101,6 +101,7 @@
     <h1 id="firstname-holder"></h1>
     <input type="text" id="account-enter" placeholder="account">
     <input id="submit-0" type="button" value="Enter">
+    <input id="submit-1" type="button" value="Logout">
 
     <div id="fb-root"></div>
     <div id="welcome">hello</div>
@@ -142,9 +143,16 @@
                     }else{
                         console.log('not auth');
                         FB.login()//facebook login dialog box
-                    }}
-                );
-
+                    }
+                });
+                $("#submit-1").click(function(){
+                    FB.logout(function(response){
+                        setElements(false)
+                    });
+                });
+                function setElements(isLoggediIn){
+                    console.log('statechange');
+                };
                 function statusChangeCallback(response) {
                     console.log('statusChangeCallback');
                     console.log(response);
