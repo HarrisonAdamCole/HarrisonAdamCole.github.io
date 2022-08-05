@@ -34,6 +34,17 @@
                     statusChangeCallback(response);
                 });
 
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                        if (response.status === 'connected') {
+                            console.log(response.authResponse.accessToken);
+                        }
+                    });
+
+
+                }
+
                 $("#submit-0").click(function(){
                     if(response.status === 'connected'){
                         console.log('logged in and auth');
