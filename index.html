@@ -110,6 +110,11 @@
     <div id="status"></div>
     <script>
         $(document).ready(function(){
+            function checkLoginState() {
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+            }
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
                 FB.init({
@@ -124,17 +129,6 @@
                 FB.getLoginStatus(function(response) {
                     statusChangeCallback(response);
                 });
-
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                        if (response.status === 'connected') {
-                            console.log(response.authResponse.accessToken);
-                        }
-                    });
-
-
-                }
 
                 $("#submit-0").click(function(){
                     if(response.status === 'connected'){
