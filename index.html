@@ -90,8 +90,7 @@
         console.log(response.data[0]);
         console.log(response.data[0].name);
         for(var page in response.data){
-            console.log(page.name);
-            console.log(page);
+            console.log(response.data[page].name);
         }
     });
   }
