@@ -23,14 +23,16 @@
                 FB.getLoginStatus(function(response) {
                     statusChangeCallback(response);
                 });
-
-                if(response.status === 'connected'){
-                    console.log('logged in and auth');
-                    setElements(true);
-                }else{
-                    console.log('not auth');
-                    FB.login()//facebook login dialog box
-                }
+                
+                $("#submit-0").click(function(){
+                    if(response.status === 'connected'){
+                        console.log('logged in and auth');
+                        setElements(true);
+                    }else{
+                        console.log('not auth');
+                        FB.login()//facebook login dialog box
+                    }}
+                );
             });
         })
     </script>
