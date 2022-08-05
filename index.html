@@ -18,12 +18,21 @@
                 });     
                 $('#loginbutton,#feedbutton').removeAttr('disabled');
                 FB.getLoginStatus(updateStatusCallback);
-
+                
+                function updateStatusCallback(){
+                    if(response.status === 'connected'){
+                        console.log('logged in and auth');
+                        setElements(true);
+                    }else{
+                        console.log('not auth');
+                        FB.login()//facebook login dialog box
+                    }}
+                }
 
                 FB.getLoginStatus(function(response) {
                     statusChangeCallback(response);
                 });
-                
+
                 $("#submit-0").click(function(){
                     if(response.status === 'connected'){
                         console.log('logged in and auth');
