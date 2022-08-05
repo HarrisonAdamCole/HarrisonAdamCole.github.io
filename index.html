@@ -83,7 +83,7 @@
   function tryfetchdate(){
     document.getElementById('data').innerHTML = 'Loading...';
     FB.api('/me', function(response){
-        document.getElementById('data').innerHTML = 'Your User Id: '+ response.userID;
+        document.getElementById('data').innerHTML = 'Your User Id: '+ response.id;
     });
   }
 
