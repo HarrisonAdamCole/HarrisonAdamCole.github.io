@@ -8,55 +8,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!--loads jquierry-->
 
-    <script>
-        $(document).ready(function(){
-            $.ajaxSetup({ cache: true });
-            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-                FB.init({
-                appId: '{373584354725302}',
-                version: 'v13.0' // or v2.1, v2.2, v2.3, ...
-                });     
-                $('#loginbutton,#feedbutton').removeAttr('disabled');
-                updateStatusCallback = false;
-                FB.getLoginStatus(updateStatusCallback);
-                
-                // function updateStatusCallback(){
-                //     if(response.status === 'connected'){
-                //         console.log('logged in and auth');
-                //         setElements(true);
-                //     }else{
-                //         console.log('not auth');
-                //         FB.login()//facebook login dialog box
-                //     }}
-                // }
-
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                        statusChangeCallback(response);
-                        if (response.status === 'connected') {
-                            console.log(response.authResponse.accessToken);
-                        }
-                    });
-
-
-                }
-
-                $("#submit-0").click(function(){
-                    if(response.status === 'connected'){
-                        console.log('logged in and auth');
-                        setElements(true);
-                    }else{
-                        console.log('not auth');
-                        FB.login()//facebook login dialog box
-                    }}
-                );
-            });
-        });
-    </script>
+    
 
 
 
@@ -154,10 +106,55 @@
     <div id="welcome">hello</div>
 
 
-
+    <div id="status"></div>
     <script>
+        $(document).ready(function(){
+            $.ajaxSetup({ cache: true });
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+                FB.init({
+                appId: '{373584354725302}',
+                version: 'v13.0' // or v2.1, v2.2, v2.3, ...
+                });     
+                $('#loginbutton,#feedbutton').removeAttr('disabled');
+                updateStatusCallback = false;
+                FB.getLoginStatus(updateStatusCallback);
+                
+                // function updateStatusCallback(){
+                //     if(response.status === 'connected'){
+                //         console.log('logged in and auth');
+                //         setElements(true);
+                //     }else{
+                //         console.log('not auth');
+                //         FB.login()//facebook login dialog box
+                //     }}
+                // }
 
-        
+                FB.getLoginStatus(function(response) {
+                    statusChangeCallback(response);
+                });
+
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                        statusChangeCallback(response);
+                        if (response.status === 'connected') {
+                            console.log(response.authResponse.accessToken);
+                        }
+                    });
+
+
+                }
+
+                $("#submit-0").click(function(){
+                    if(response.status === 'connected'){
+                        console.log('logged in and auth');
+                        setElements(true);
+                    }else{
+                        console.log('not auth');
+                        FB.login()//facebook login dialog box
+                    }}
+                );
+            });
+        });
     </script>
 </body>
 </html>
