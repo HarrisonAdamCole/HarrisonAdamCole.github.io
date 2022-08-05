@@ -17,17 +17,18 @@
                 version: 'v13.0' // or v2.1, v2.2, v2.3, ...
                 });     
                 $('#loginbutton,#feedbutton').removeAttr('disabled');
+                updateStatusCallback = true;
                 FB.getLoginStatus(updateStatusCallback);
                 
-                function updateStatusCallback(){
-                    if(response.status === 'connected'){
-                        console.log('logged in and auth');
-                        setElements(true);
-                    }else{
-                        console.log('not auth');
-                        FB.login()//facebook login dialog box
-                    }}
-                }
+                // function updateStatusCallback(){
+                //     if(response.status === 'connected'){
+                //         console.log('logged in and auth');
+                //         setElements(true);
+                //     }else{
+                //         console.log('not auth');
+                //         FB.login()//facebook login dialog box
+                //     }}
+                // }
 
                 FB.getLoginStatus(function(response) {
                     statusChangeCallback(response);
@@ -43,7 +44,7 @@
                     }}
                 );
             });
-        })
+        });
     </script>
 
 
