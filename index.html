@@ -25,6 +25,15 @@
             $("#submit-0").click(function(){//on click of the button this will activate 
                 $('#welcome').attr('html',response.userID)//setting the inter text of the welcome elements to the facebook userID
             });
+
+            function statusChangeCallback(response){//outputs loggin in state to console
+                if(response.status === 'connected'){
+                    console.log('logged in and auth');
+                    setElements(true);
+                }else{
+                    console.log('not auth');
+                }
+            };
         })
     </script>
 
