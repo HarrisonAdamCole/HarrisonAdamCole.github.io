@@ -8,8 +8,18 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> <!--loads jquierry-->
 
-    
-
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({ cache: true });
+            $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                    });
+                };
+            });
+         });
+    </script>
 
 
     <!-- <script>   
@@ -113,11 +123,6 @@
          
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                    });
-                };
                 FB.init({
                 appId: '{373584354725302}',
                 version: 'v13.0' // or v2.1, v2.2, v2.3, ...
