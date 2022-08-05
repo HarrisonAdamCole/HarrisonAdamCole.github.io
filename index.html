@@ -48,9 +48,7 @@
                     $('#welcome').attr('html',response.userID)
                 }
             }
-        });
-
-        function statusChangeCallback(response){
+            function statusChangeCallback(response){
             if(response.status === 'connected'){
                 console.log('logged in and auth');
                 setElements(true);
@@ -58,6 +56,9 @@
                 console.log('not auth');
             }
         }
+        });
+
+        
         
         
 
