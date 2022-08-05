@@ -81,9 +81,10 @@
     });
   }
   function tryfetchdate(){
+    document.getElementById('logwithFB').innerHTML = '';//deletes login button
     document.getElementById('data').innerHTML = 'Loading...';
-    FB.api('/me', function(response){
-        document.getElementById('data').innerHTML = 'Your User Id: '+ response.id;
+    FB.api('/me/accounts', function(response){
+        document.getElementById('data').innerHTML = 'Your User Id: '+ response.data;
     });
   }
 
