@@ -84,12 +84,9 @@
     document.getElementById('logwithFB').innerHTML = '';//deletes login button
     document.getElementById('data').innerHTML = 'Loading...';
     FB.api('/me/accounts', function(response){
-        document.getElementById('data').innerHTML = 'Your Page Is: '+ response.data[0].name;
-        console.log(response);
-        console.log(response.data);
-        console.log(response.data[0]);
-        console.log(response.data[0].name);
+        document.getElementById('data').innerHTML = 'Your Page Is: ';
         for(var page in response.data){
+            document.getElementById('data').innerHTML = document.getElementById('data').innerHTML + ', '+ response.data[page].name;
             console.log(response.data[page].name);
         }
     });
