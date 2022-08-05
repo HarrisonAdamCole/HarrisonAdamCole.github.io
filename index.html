@@ -113,6 +113,11 @@
          
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                    });
+                };
                 FB.init({
                 appId: '{373584354725302}',
                 version: 'v13.0' // or v2.1, v2.2, v2.3, ...
@@ -146,11 +151,6 @@
                     console.log('statechange');
                 };
 
-                function checkLoginState() {
-                    FB.getLoginStatus(function(response) {
-                            statusChangeCallback(response);
-                    });
-                };
                 function statusChangeCallback(response) {
                     console.log('statusChangeCallback');
                     console.log(response);
