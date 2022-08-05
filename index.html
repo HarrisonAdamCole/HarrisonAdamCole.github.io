@@ -86,7 +86,7 @@
     FB.api('/me/accounts', function(response){
         document.getElementById('data').innerHTML = 'Your User Id: '+ response;
         console.log(response);
-        for(var page in response.data){
+        for(var page in response){
             console.log(page.name);
         }
     });
