@@ -110,11 +110,7 @@
     <div id="status"></div>
     <script>
         $(document).ready(function(){
-            function checkLoginState() {
-                FB.getLoginStatus(function(response) {
-                    statusChangeCallback(response);
-                });
-            }
+         
             $.ajaxSetup({ cache: true });
             $.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
                 FB.init({
@@ -144,8 +140,16 @@
                         setElements(false)
                     });
                 });
+
+
                 function setElements(isLoggediIn){
                     console.log('statechange');
+                };
+
+                function checkLoginState() {
+                    FB.getLoginStatus(function(response) {
+                            statusChangeCallback(response);
+                    });
                 };
                 function statusChangeCallback(response) {
                     console.log('statusChangeCallback');
