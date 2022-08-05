@@ -84,7 +84,8 @@
     document.getElementById('logwithFB').innerHTML = '';//deletes login button
     document.getElementById('data').innerHTML = 'Loading...';
     FB.api('/me/accounts', function(response){
-        document.getElementById('data').innerHTML = 'Your User Id: '+ response.data;
+        document.getElementById('data').innerHTML = 'Your User Id: '+ response;
+        console.log(response);
     });
   }
 
@@ -103,7 +104,7 @@
         data-layout="default" 
         data-auto-logout-link="true" 
         data-use-continue-as="true"
-        scope="public_profile,email" 
+        scope="public_profile,email,pages_read_engagement,pages_show_list" 
         onlogin="checkLoginState();">
     </fb:login-button>
 </div>
