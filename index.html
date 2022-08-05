@@ -86,8 +86,8 @@
     FB.api('/me/accounts', function(response){
         document.getElementById('data').innerHTML = 'Your User Id: '+ response;
         console.log(response);
-        console.log('data'+response.data);
-        console.log('data[0]'+ response.data[0]);
+        console.log(response.data);
+        console.log(response.data[0]);
     });
   }
 
