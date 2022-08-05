@@ -55,6 +55,11 @@
             }else{
                 console.log('not auth');
             }
+            function checkLoginState() {
+                FB.getLoginStatus(function(response) {
+                statusChangeCallback(response);
+            });
+            }
         }
         });
 
@@ -63,11 +68,7 @@
         
 
         
-        function checkLoginState() {
-            FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
-        }
+        
     </script>
 
     <link rel="shortcut icon" href="assets/brandAssets/favicon.svg" type="image/x-icon">  
