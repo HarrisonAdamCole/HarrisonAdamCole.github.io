@@ -19,10 +19,10 @@
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
       testAPI();
+      tryfetchdate();
     } else {
       // The person is not logged into your app or we are unable to tell.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      document.getElementById('status').innerHTML = 'Please log ' + 'in to view data.';
     }
   }
 
@@ -80,6 +80,12 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+  function tryfetchdate(){
+    document.getElementById('data').innerHTML = 'Loading...';
+    FB.api('/me', function(response){
+        document.getElementById('data').innerHTML = response.usedID;
+    });
+  }
 
 </script>
 
@@ -88,19 +94,24 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
+<div id="logwithFB">
+    <fb:login-button 
+        data-width="" 
+        data-size="large" 
+        data-button-type="continue_with" 
+        data-layout="default" 
+        data-auto-logout-link="true" 
+        data-use-continue-as="true"
+        scope="public_profile,email" 
+        onlogin="checkLoginState();">
+    </fb:login-button>
+</div>
 
-<fb:login-button 
-    data-width="" 
-    data-size="large" 
-    data-button-type="continue_with" 
-    data-layout="default" 
-    data-auto-logout-link="true" 
-    data-use-continue-as="true"
-    scope="public_profile,email" 
-    onlogin="checkLoginState();">
-</fb:login-button>
 
 <div id="status">
+</div>
+<div id="data">
+
 </div>
 
 </body>
